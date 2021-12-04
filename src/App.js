@@ -24,7 +24,7 @@ class App extends Component {
     super(props);
     this.state = {
       // 읽기 페이지인지 구분하기 위해 Mode 값을 줌
-      mode: "welcome",
+      mode: "read",
       subject: { title: "WEB", sub: "World Wide Web!" },
       welcome: { title: "Welcome", desc: "Hello, React!!" },
       contents: [
@@ -51,30 +51,20 @@ class App extends Component {
 
     return (
       <div className="App">
-        {/* <Subject
+        <Subject
           title={this.state.subject.title}
           sub={this.state.subject.sub}
-        ></Subject> */}
-        {/* <Subject title="WEB" sub="world wide web!"></Subject> */}
-
-        <header>
-          <h1>
-            <a
-              href="/"
-              onClick={function (e) {
-                console.log(e);
-                e.preventDefault(); // 태그가 가지고 있는 기본적인 동작방법을 못하게 할때 사용
-                // debugger; // 중단점 
-              }}
-            >
-              {" "}
-              {this.state.subject.title}
-            </a>
-          </h1>
-          {this.state.subject.sub}
-        </header>
-
-        <TOC data={this.state.contents}></TOC>
+          onChangePage={function () {
+            this.setState({ mode: "welcome" });
+          }.bind(this)}
+        ></Subject>
+         
+        <TOC
+          onChangePage={function () {
+            this.setState({ mode: "read" });
+          }.bind(this)}
+          data={this.state.contents}
+        ></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>
     );
