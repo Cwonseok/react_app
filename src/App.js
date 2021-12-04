@@ -41,7 +41,7 @@ class App extends Component {
   render() {
     var _title,
       _desc = null;
-    if (this.state.mode === 'welcome') {
+    if (this.state.mode === "welcome") {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if (this.state.mode === "read") {
@@ -51,11 +51,29 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Subject
+        {/* <Subject
           title={this.state.subject.title}
           sub={this.state.subject.sub}
-        ></Subject>
+        ></Subject> */}
         {/* <Subject title="WEB" sub="world wide web!"></Subject> */}
+
+        <header>
+          <h1>
+            <a
+              href="/"
+              onClick={function (e) {
+                console.log(e);
+                e.preventDefault(); // 태그가 가지고 있는 기본적인 동작방법을 못하게 할때 사용
+                // debugger; // 중단점 
+              }}
+            >
+              {" "}
+              {this.state.subject.title}
+            </a>
+          </h1>
+          {this.state.subject.sub}
+        </header>
+
         <TOC data={this.state.contents}></TOC>
         <Content title={_title} desc={_desc}></Content>
       </div>

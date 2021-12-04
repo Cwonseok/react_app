@@ -7,7 +7,7 @@ class Subject extends React.Component {
         <h1>
           <a href="/">{this.props.title}</a>
         </h1>
-        {/* 리팩토링 하였다 this.props.title / sub  */}
+        {/* 리팩토링 하였다 this.props.title / sub  */} 
         {this.props.sub}
       </header>
     );
