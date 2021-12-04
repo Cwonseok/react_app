@@ -2,19 +2,24 @@ import React, { Component } from "react";
 
 class TOC extends React.Component {
   render() {
+    var lists = [];
+    var data = this.props.data;
+    var i = 0;
+    while (i < data.length) {
+      lists.push(
+        <li key={i}>
+          {data[i.id]}
+          {/* key 값을 넣어주는 이유는 필요로 하여 요청하기 떄문에 오류가 나옴   */}
+
+          <a href={"/content/" + data[i].id}>{data[i].title}</a>
+          {/* <a href={data[i].id}>{data[i].title}</a> */}
+        </li>
+      );
+      i = i + 1;
+    }
     return (
       <nav>
-        <ul>
-          <li>
-            <a href="1.html">HTML</a>
-          </li>
-          <li>
-            <a href="2.html">CSS</a>
-          </li>
-          <li>
-            <a href="3.html">JavaScript</a>
-          </li>
-        </ul>
+        <ul>{lists}</ul>
       </nav>
     );
   }
